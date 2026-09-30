@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="YASSIN VIP ACADEMY - لوحة الإدارة">
+<title>YASSIN VIP ACADEMY | لوحة الإدارة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#6c5ce7;--secondary:#fd79a8;--accent:#00cec9;--gold:#fdcb6e;
+  --bg:#0a0a15;--bg-alt:#12122a;--card-bg:#1a1a2e;--card-hover:#22223a;
+  --text:#fff;--text-muted:#a0a0b8;--border:rgba(255,255,255,.08);
+  --success:#00b894;--danger:#e84393;--warning:#fdcb6e;
+  --shadow:0 10px 40px rgba(0,0,0,.4);
+  --shadow-lg:0 20px 60px rgba(0,0,0,.5);
+  --gradient:linear-gradient(135deg,#6c5ce7 0%,#fd79a8 100%);
+  --gradient-2:linear-gradient(135deg,#00cec9 0%,#6c5ce7 100%);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;min-height:100vh}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+input{font-family:inherit}
+
+/* animated background */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(108,92,231,.2) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(253,121,168,.15) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(0,206,201,.08) 0%, transparent 60%);
+  animation:bgFloat 20s ease-in-out infinite;
+}
+@keyframes bgFloat{
+  0%,100%{transform:scale(1) rotate(0deg)}
+  50%{transform:scale(1.1) rotate(3deg)}
+}
+
+.container{max-width:1300px;margin:0 auto;padding:0 24px}
+
+/* ==================== HEADER ==================== */
+.hero-header{
+  position:relative;
+  padding:70px 0 50px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.hero-header::before{
+  content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:500px;height:500px;
+  background:var(--gradient);
+  border-radius:50%;
+  opacity:.12;
+  filter:blur(80px);
+  z-index:-1;
+}
+.crown-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:10px 24px;
+  background:linear-gradient(135deg,rgba(108,92,231,.18),rgba(253,121,168,.18));
+  border:1.5px solid rgba(108,92,231,.35);
+  border-radius:50px;
+  font-weight:700;font-size:.9rem;
+  color:var(--gold);
+  margin-bottom:22px;
+  animation:glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse{
+  0%,100%{box-shadow:0 0 0 rgba(108,92,231,.4)}
+  50%{box-shadow:0 0 30px rgba(108,92,231,.4)}
+}
+.crown-badge i{font-size:1.2rem}
+
+.main-title{
+  font-family:'Tajawal',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:900;
+  line-height:1.2;
+  margin-bottom:16px;
+  letter-spacing:-1px;
+}
+.main-title .gradient-text{
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.subtitle{
+  color:var(--text-muted);
+  font-size:1.05rem;
+  max-width:600px;
+  margin:0 auto 30px;
+}
+
+/* ==================== QUOTE ==================== */
+.quote-card{
+  max-width:900px;
+  margin:40px auto 0;
+  padding:40px;
+  background:linear-gradient(135deg, rgba(108,92,231,.08) 0%, rgba(253,121,168,.08) 100%);
+  border:1.5px solid rgba(108,92,231,.25);
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;
+}
+.quote-card::before{
+  content:'"';
+  position:absolute;
+  top:-30px;right:30px;
+  font-size:180px;
+  font-family:'Tajawal',serif;
+  color:rgba(108,92,231,.12);
+  line-height:1;
+}
+.quote-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--gradient);
+}
+.quote-text{
+  font-family:'Tajawal',sans-serif;
+  font-size:clamp(1.3rem,3vw,2rem);
+  font-weight:900;
+  line-height:1.5;
+  text-align:center;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:18px;
+  position:relative;
+  z-index:1;
+}
+.quote-author{
+  text-align:center;
+  color:var(--text-muted);
+  font-size:.95rem;
+  font-weight:600;
+  position:relative;
+  z-index:1;
+}
+.quote-author::before{
+  content:'— ';
+  color:var(--primary);
+}
+
+/* ==================== SECTION TITLES ==================== */
+.section{
+  padding:60px 0;
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:1.5rem;
+  font-weight:900;
+  margin-bottom:30px;
+  padding-bottom:14px;
+  border-bottom:1.5px solid var(--border);
+}
+.section-title i{
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--gradient);
+  color:#fff;
+  border-radius:12px;
+  font-size:1.1rem;
+  box-shadow:0 8px 20px rgba(108,92,231,.35);
+}
+
+/* ==================== INFO CARDS ==================== */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:18px;
+}
+.info-card{
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+}
+.info-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:60px;height:60px;
+  background:var(--gradient);
+  opacity:.06;
+  border-radius:0 0 0 100%;
+  transition:var(--transition);
+}
+.info-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--primary);
+  box-shadow:var(--shadow);
+}
+.info-card:hover::before{
+  width:120px;height:120px;
+  opacity:.12;
+}
+.info-icon{
+  width:54px;height:54px;
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+  color:#fff;
+  flex-shrink:0;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.ic-telegram{background:linear-gradient(135deg,#2AABEE,#229ED9)}
+.ic-channel{background:linear-gradient(135deg,#fd79a8,#e84393)}
+.ic-phone{background:linear-gradient(135deg,#00b894,#00cec9)}
+.ic-email{background:linear-gradient(135deg,#6c5ce7,#a29bfe)}
+.ic-bot{background:linear-gradient(135deg,#fdcb6e,#e17055)}
+.ic-tool{background:linear-gradient(135deg,#6c5ce7,#fd79a8)}
+
+.info-content{flex:1;min-width:0}
+.info-label{
+  font-size:.8rem;
+  color:var(--text-muted);
+  font-weight:700;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.info-value{
+  font-size:1.05rem;
+  font-weight:800;
+  word-break:break-all;
+  margin-bottom:10px;
+}
+.info-value.ltr{direction:ltr;text-align:right}
+.copy-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  background:rgba(108,92,231,.15);
+  color:var(--primary);
+  border-radius:8px;
+  font-size:.8rem;
+  font-weight:700;
+  transition:var(--transition);
+}
+.copy-btn:hover{
+  background:var(--primary);
+  color:#fff;
+  transform:translateY(-2px);
+}
+.copy-btn.copied{
+  background:var(--success);
+  color:#fff;
+}
+
+/* ==================== CODE CARDS ==================== */
+.codes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+  gap:16px;
+}
+.code-card{
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+}
+.code-card::before{
+  content:'';position:absolute;right:0;top:0;bottom:0;
+  width:4px;
+  background:var(--gradient);
+}
+.code-card:hover{
+  transform:translateX(-6px);
+  border-color:var(--primary);
+  box-shadow:var(--shadow);
+  background:var(--card-hover);
+}
+.code-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+.code-title{
+  font-size:.95rem;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.code-icon{
+  width:38px;height:38px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+  color:#fff;
+  flex-shrink:0;
+}
+.code-badge{
+  font-size:.7rem;
+  font-weight:800;
+  padding:3px 10px;
+  border-radius:50px;
+  background:rgba(0,206,201,.15);
+  color:var(--accent);
+}
+.code-badge.paid{
+  background:rgba(253,203,110,.15);
+  color:var(--gold);
+}
+.code-value{
+  background:var(--bg);
+  border:1.5px dashed var(--primary);
+  border-radius:10px;
+  padding:12px 14px;
+  font-family:'Courier New',monospace;
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--primary);
+  letter-spacing:1px;
+  word-break:break-all;
+  margin-bottom:12px;
+  position:relative;
+  transition:var(--transition);
+  cursor:pointer;
+}
+.code-value:hover{
+  background:rgba(108,92,231,.08);
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.code-value.copied{
+  border-color:var(--success);
+  color:var(--success);
+  background:rgba(0,184,148,.08);
+}
+.code-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.action-btn{
+  flex:1;
+  padding:9px 14px;
+  border-radius:9px;
+  font-size:.8rem;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  transition:var(--transition);
+  min-width:100px;
+}
+.action-btn-copy{
+  background:rgba(108,92,231,.15);
+  color:var(--primary);
+}
+.action-btn-copy:hover{
+  background:var(--primary);
+  color:#fff;
+}
+.action-btn-tg{
+  background:rgba(42,171,238,.15);
+  color:#2AABEE;
+}
+.action-btn-tg:hover{
+  background:#2AABEE;
+  color:#fff;
+}
+
+/* ==================== STATS ROW ==================== */
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:16px;
+  margin-bottom:40px;
+}
+.stat-box{
+  background:var(--card-bg);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  text-align:center;
+  transition:var(--transition);
+  position:relative;
+  overflow:hidden;
+}
+.stat-box:hover{
+  transform:translateY(-6px);
+  border-color:var(--primary);
+  box-shadow:var(--shadow);
+}
+.stat-box i{
+  font-size:1.6rem;
+  margin-bottom:10px;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.stat-box h3{
+  font-size:1.8rem;
+  font-weight:900;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.1;
+  margin-bottom:4px;
+}
+.stat-box p{
+  font-size:.82rem;
+  color:var(--text-muted);
+  font-weight:700;
+}
+
+/* ==================== NOTES ==================== */
+.notes-box{
+  background:linear-gradient(135deg, rgba(253,203,110,.08), rgba(225,112,85,.08));
+  border:1.5px solid rgba(253,203,110,.25);
+  border-radius:18px;
+  padding:24px;
+  margin-top:20px;
+}
+.notes-box h4{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:1.05rem;
+  margin-bottom:14px;
+  color:var(--gold);
+}
+.notes-box h4 i{font-size:1.2rem}
+.notes-list{display:grid;gap:10px}
+.note-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:12px 14px;
+  background:rgba(0,0,0,.15);
+  border-radius:10px;
+  font-size:.9rem;
+  line-height:1.7;
+}
+.note-item i{
+  color:var(--gold);
+  font-size:.95rem;
+  margin-top:4px;
+  flex-shrink:0;
+}
+.note-item strong{color:var(--text)}
+
+/* ==================== FOOTER ==================== */
+.footer{
+  padding:40px 0 30px;
+  border-top:1.5px solid var(--border);
+  margin-top:60px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:'Tajawal',sans-serif;
+  font-size:1.6rem;
+  font-weight:900;
+  margin-bottom:12px;
+  letter-spacing:1px;
+}
+.footer-logo span{
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.footer-text{
+  color:var(--text-muted);
+  font-size:.85rem;
+  margin-bottom:20px;
+}
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+.footer-links a{
+  width:44px;height:44px;
+  border-radius:12px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+  transition:var(--transition);
+}
+.footer-links a:hover{
+  background:var(--gradient);
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(108,92,231,.35);
+}
+.footer-copy{
+  color:var(--text-muted);
+  font-size:.8rem;
+  opacity:.7;
+}
+
+/* ==================== TOAST ==================== */
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:var(--card-bg);
+  padding:14px 22px;
+  border-radius:14px;
+  border:1.5px solid var(--success);
+  box-shadow:var(--shadow-lg);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:700;
+  font-size:.9rem;
+  z-index:9999;
+  transform:translateY(150px);
+  opacity:0;
+  transition:var(--transition);
+  max-width:calc(100vw - 40px);
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast i{color:var(--success);font-size:1.2rem}
+
+/* ==================== RESPONSIVE ==================== */
+@media(max-width:768px){
+  .hero-header{padding:50px 0 35px}
+  .quote-card{padding:28px 22px}
+  .quote-card::before{font-size:120px;top:-20px;right:15px}
+  .section{padding:40px 0}
+  .section-title{font-size:1.2rem}
+  .section-title i{width:36px;height:36px;font-size:.95rem}
+  .codes-grid{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr}
+  .toast{right:15px;left:15px;bottom:20px}
+}
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .info-card{padding:18px}
+  .info-icon{width:44px;height:44px;font-size:1.15rem}
+  .info-value{font-size:.95rem}
+  .code-card{padding:18px}
+  .code-value{font-size:.82rem;padding:10px}
+  .stat-box h3{font-size:1.4rem}
+}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{
+  background:var(--gradient);
+  border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover{background:var(--primary)}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="hero-header">
+  <div class="container">
+    <div class="crown-badge">
+      <i class="fa-solid fa-crown"></i>
+      <span>لوحة الإدارة الرسمية</span>
+    </div>
+    <h1 class="main-title">
+      <span class="gradient-text">YASSIN VIP ACADEMY</span>
+    </h1>
+    <p class="subtitle">
+      كل بياناتك وأكوادك المهمة في مكان واحد منظم — جاهز للنسخ في أي وقت
+    </p>
+
+    <!-- 🎯 المقولة -->
+    <div class="quote-card">
+      <p class="quote-text">
+        "لا تنتظر الفرصة… اصنعها بنفسك، فالقمة لا تنتظر أحدًا"
+      </p>
+      <p class="quote-author">YASSIN VIP ACADEMY</p>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== STATS ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-box">
+        <i class="fa-solid fa-book-open"></i>
+        <h3>6</h3>
+        <p>كورسات احترافية</p>
+      </div>
+      <div class="stat-box">
+        <i class="fa-solid fa-box-open"></i>
+        <h3>4</h3>
+        <p>منتجات رقمية</p>
+      </div>
+      <div class="stat-box">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <h3>4</h3>
+        <p>أدوات Lua</p>
+      </div>
+      <div class="stat-box">
+        <i class="fa-solid fa-key"></i>
+        <h3>10</h3>
+        <p>أكواد تفعيل</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OFFICIAL CONTACTS ==================== -->
+<section class="section" style="padding-top:20px">
+  <div class="container">
+    <h2 class="section-title">
+      <i class="fa-solid fa-address-card"></i>
+      <span>البيانات الرسمية</span>
+    </h2>
+
+    <div class="info-grid">
+
+      <!-- Telegram User -->
+      <div class="info-card">
+        <div class="info-icon ic-telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">
+            <i class="fa-solid fa-user"></i>
+            حساب Telegram
+          </div>
+          <div class="info-value ltr">@Elkomandayassin</div>
+          <button class="copy-btn" onclick="copyText('@Elkomandayassin', this)">
+            <i class="fa-solid fa-copy"></i> نسخ
+          </button>
+        </div>
+      </div>
+
+      <!-- Telegram Link -->
+      <div class="info-card">
+        <div class="info-icon ic-telegram">
+          <i class="fa-solid fa-link"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">
+            <i class="fa-solid fa-at"></i>
+            رابط التواصل
+          </div>
+          <div class="info-value ltr">https://t.me/Elkomandayassin</div>
+          <button class="copy-btn" onclick="copyText('https://t.me/Elkomandayassin', this)">
+            <i class="fa-solid fa-copy"></i> نسخ
+          </button>
+        </div>
+      </div>
+
+      <!-- Official Channel -->
+      <div class="info-card">
+        <div class="info-icon ic-channel">
+          <i class="fa-solid fa-bullhorn"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">
+            <i class="fa-solid fa-tower-broadcast"></i>
+            القناة الرسمية
+          </div>
+          <div class="info-value ltr">https://t.me/hamoFiles</div>
+          <button class="copy-btn" onclick="copyText('https://t.me/hamoFiles', this)">
+            <i class="fa-solid fa-copy"></i> نسخ
+          </button>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="info-card">
+        <div class="info-icon ic-phone">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">
+            <i class="fa-solid fa-mobile-screen"></i>
+            رقم الهاتف
+          </div>
+          <div class="info-value ltr">01213771957</div>
+          <button class="copy-btn" onclick="copyText('01213771957', this)">
+            <i class="fa-solid fa-copy"></i> نسخ
+          </button>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="info-card">
+        <div class="info-icon ic-email">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">
+            <i class="fa-solid fa-at"></i>
+            البريد الإلكتروني
+          </div>
+          <div class="info-value ltr">info@yassinvip.com</div>
+          <button class="copy-btn" onclick="copyText('info@yassinvip.com', this)">
+            <i class="fa-solid fa-copy"></i> نسخ
+          </button>
+        </div>
+      </div>
+
+      <!-- Tool Channel (Lua App) -->
+      <div class="info-card">
+        <div class="info-icon ic-tool">
+          <i class="fa-solid fa-syringe"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">
+            <i class="fa-solid fa-lock"></i>
+            قناة تطبيق Lua
+          </div>
+          <div class="info-value ltr">https://t.me/YassinaJesus/18</div>
+          <button class="copy-btn" onclick="copyText('https://t.me/YassinaJesus/18', this)">
+            <i class="fa-solid fa-copy"></i> نسخ
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ACTIVATION CODES ==================== -->
+<section class="section" style="padding-top:20px">
+  <div class="container">
+    <h2 class="section-title">
+      <i class="fa-solid fa-key"></i>
+      <span>أكواد التفعيل — كورسات ومنتجات</span>
+    </h2>
+
+    <div class="codes-grid">
+
+      <!-- c1 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#f7df1e,#e8b60f)">
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <span>JavaScript من الصفر</span>
+          </div>
+          <span class="code-badge">c1</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-Ooo2026Yassinblack', this)">
+          Yassin-Ooo2026Yassinblack
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-Ooo2026Yassinblack', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- c2 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#61dafb,#21a1c4)">
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <span>React الحديثة</span>
+          </div>
+          <span class="code-badge">c2</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-React2026Vippro', this)">
+          Yassin-React2026Vippro
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-React2026Vippro', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- c3 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#fd79a8,#e84393)">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <span>تصميم UI/UX</span>
+          </div>
+          <span class="code-badge">c3</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-UIUX2026Design', this)">
+          Yassin-UIUX2026Design
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-UIUX2026Design', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- c4 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#fd79a8,#a29bfe)">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <span>التسويق الرقمي</span>
+          </div>
+          <span class="code-badge">c4</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-Market2026Pro', this)">
+          Yassin-Market2026Pro
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-Market2026Pro', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- c5 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+            <span>أساسيات Lua</span>
+          </div>
+          <span class="code-badge">c5</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-Lua2026Basic', this)">
+          Yassin-Lua2026Basic
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-Lua2026Basic', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- c6 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#3776ab,#ffd43b)">
+              <i class="fa-brands fa-python"></i>
+            </div>
+            <span>Python للذكاء الاصطناعي</span>
+          </div>
+          <span class="code-badge">c6</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-Python2026AI', this)">
+          Yassin-Python2026AI
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-Python2026AI', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- p1 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#00cec9,#00b894)">
+              <i class="fa-solid fa-file-code"></i>
+            </div>
+            <span>حزمة HTML</span>
+          </div>
+          <span class="code-badge paid">منتج</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-HTML2026Pack', this)">
+          Yassin-HTML2026Pack
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-HTML2026Pack', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- p2 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#fdcb6e,#e17055)">
+              <i class="fa-solid fa-book"></i>
+            </div>
+            <span>كتاب البرمجة PDF</span>
+          </div>
+          <span class="code-badge paid">منتج</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-Book2026PDF', this)">
+          Yassin-Book2026PDF
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-Book2026PDF', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- p3 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <span>UI Kit</span>
+          </div>
+          <span class="code-badge paid">منتج</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-UIKit2026Figma', this)">
+          Yassin-UIKit2026Figma
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-UIKit2026Figma', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+      <!-- p4 -->
+      <div class="code-card">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#00b894,#00cec9)">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <span>سكربتات JavaScript</span>
+          </div>
+          <span class="code-badge paid">منتج</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin-JsScript2026', this)">
+          Yassin-JsScript2026
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin-JsScript2026', this)">
+            <i class="fa-solid fa-copy"></i> نسخ الكود
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Protected Tool Password -->
+    <h2 class="section-title" style="margin-top:50px">
+      <i class="fa-solid fa-lock"></i>
+      <span>كلمة مرور التطبيق المحمي</span>
+    </h2>
+
+    <div class="codes-grid">
+      <div class="code-card" style="border-color:rgba(253,121,168,.4)">
+        <div class="code-header">
+          <div class="code-title">
+            <div class="code-icon" style="background:linear-gradient(135deg,#6c5ce7,#fd79a8)">
+              <i class="fa-solid fa-syringe"></i>
+            </div>
+            <span>تطبيق حقن وفك تشفير Lua</span>
+          </div>
+          <span class="code-badge" style="background:rgba(253,121,168,.15);color:var(--secondary)">محمي</span>
+        </div>
+        <div class="code-value" onclick="copyText('Yassin_Vip-Black', this)" style="border-color:var(--secondary);color:var(--secondary)">
+          Yassin_Vip-Black
+        </div>
+        <div class="code-actions">
+          <button class="action-btn action-btn-copy" onclick="copyText('Yassin_Vip-Black', this)" style="background:rgba(253,121,168,.15);color:var(--secondary)">
+            <i class="fa-solid fa-copy"></i> نسخ كلمة المرور
+          </button>
+          <a href="https://t.me/YassinaJesus/18" target="_blank" rel="noopener" class="action-btn action-btn-tg">
+            <i class="fa-brands fa-telegram"></i> رابط التطبيق
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-box">
+      <h4>
+        <i class="fa-solid fa-lightbulb"></i>
+        ملاحظات مهمة
+      </h4>
+      <div class="notes-list">
+        <div class="note-item">
+          <i class="fa-solid fa-key"></i>
+          <div>
+            <strong>كل كود يفتح كورس واحد فقط</strong> — كود JavaScript لا يفتح React، والعكس صحيح.
+          </div>
+        </div>
+        <div class="note-item">
+          <i class="fa-solid fa-user-check"></i>
+          <div>
+            <strong>ابعت الكود للعميل على Telegram فقط</strong> بعد تأكيد استلام الدفع.
+          </div>
+        </div>
+        <div class="note-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div>
+            <strong>لا تشارك الأكواد علنًا</strong> — كل كود مخصص لكورس معيّن ويمكن للعميل تفعيله مرة واحدة.
+          </div>
+        </div>
+        <div class="note-item">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <div>
+            <strong>بعد التفعيل</strong> يظهر للعميل زر "طلب الانضمام للقناة" — تضغط عليه وتستقبل الطلب في Telegram مع تفاصيل الكورس.
+          </div>
+        </div>
+        <div class="note-item">
+          <i class="fa-solid fa-rotate"></i>
+          <div>
+            <strong>لتغيير أي كود</strong> — عدّل الملف الرئيسي في قسم <code style="background:var(--bg);padding:2px 8px;border-radius:6px;color:var(--primary)">ACTIVATION_CODES</code>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">
+      <span>YASSIN VIP ACADEMY</span>
+    </div>
+    <p class="footer-text">
+      لوحة الإدارة الرسمية — جميع بياناتك محفوظة ومنظمة في مكان واحد
+    </p>
+    <div class="footer-links">
+      <a href="https://t.me/Elkomandayassin" target="_blank" rel="noopener" title="Telegram">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+      <a href="https://t.me/hamoFiles" target="_blank" rel="noopener" title="Channel">
+        <i class="fa-solid fa-bullhorn"></i>
+      </a>
+      <a href="tel:01213771957" title="Phone">
+        <i class="fa-solid fa-phone"></i>
+      </a>
+      <a href="mailto:info@yassinvip.com" title="Email">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+    <p class="footer-copy">© 2025 YASSIN VIP ACADEMY — All Rights Reserved</p>
+  </div>
+</footer>
+
+<!-- ==================== TOAST ==================== -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toastMessage">تم النسخ بنجاح</span>
+</div>
+
+<script>
+'use strict';
+
+/* ==================== COPY FUNCTION ==================== */
+function copyText(text, element){
+  navigator.clipboard.writeText(text).then(() => {
+    // Visual feedback on element
+    if (element && element.classList){
+      const originalText = element.innerHTML;
+      element.classList.add('copied');
+
+      if (element.classList.contains('copy-btn')){
+        element.innerHTML = '<i class="fa-solid fa-check"></i> تم النسخ';
+      } else if (element.classList.contains('action-btn-copy')){
+        element.innerHTML = '<i class="fa-solid fa-check"></i> تم النسخ';
+      } else if (element.classList.contains('code-value')){
+        const original = element.textContent;
+        element.textContent = '✓ ' + original;
+      }
+
+      setTimeout(() => {
+        element.innerHTML = originalText;
+        if (element.classList.contains('code-value')){
+          element.classList.remove('copied');
+        }
+      }, 1600);
+    }
+
+    // Show toast
+    showToast('تم النسخ بنجاح ✓');
+  }).catch(err => {
+    showToast('تعذر النسخ — انسخ يدويًا');
+    console.error(err);
+  });
+}
+
+/* ==================== TOAST ==================== */
+function showToast(message){
+  const toast = document.getElementById('toast');
+  const msg = document.getElementById('toastMessage');
+  msg.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+/* ==================== SCROLL ANIMATIONS ==================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {threshold: 0.1});
+
+  document.querySelectorAll('.info-card, .code-card, .stat-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+});
+
+/* ==================== GLOBAL ==================== */
+window.copyText = copyText;
+</script>
+</body>
+  </html>
